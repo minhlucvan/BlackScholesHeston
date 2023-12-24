@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator
 import random as rd
-import BrownianMotion as bm
-import Bisection as bi
+import BlackScholesHeston.BrownianMotion as bm
+import BlackScholesHeston.Bisection as bi
 import csv
 from scipy.stats import norm
 import time
@@ -57,7 +57,7 @@ def IVSurfacePlot(S0, r, T, K, P):
   for Trow in T:
     IV.append([])
     for t in Trow:
-      vol = 100 * bi.bisection(S0, K[i][0], t/12, r, P[i][j], a, b, imax)
+      vol = 100 * bi.bisection(S0, K[i][j], t/252, r, P[i][j], a, b, imax)
       # print(t, K[i][0], P[i][j], "->", vol)
       IV[i].append(vol)
       j += 1

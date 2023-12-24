@@ -8,8 +8,8 @@ from scipy.stats import norm
 from scipy.integrate import quad
 import time
 import Heston as h
-import BlackScholes as bs
-import BrownianMotion as bm
+import BrownianMotion.BlackScholes as bs
+import BlackScholesHeston.Bisection as bi
 plt.style.use("ggplot")
 start_time = time.time()
 np.random.seed(round(start_time))

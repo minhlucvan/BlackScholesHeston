@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import Heston as h
-import BlackScholes as bs
+import BrownianMotion.BlackScholes as bs
 from scipy.optimize import Bounds, differential_evolution, minimize
 import time
 import csv

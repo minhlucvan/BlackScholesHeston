@@ -5,7 +5,7 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator
 import random as rd
 import csv
-import BlackScholes as bs
+import BlackScholesHeston.BlackScholes as bs
 from scipy.stats import norm
 
 rd.seed(123)
@@ -30,6 +30,8 @@ def readcsv(filename, T):
     
 # Calculates the implied volatility using the bisection method
 def bisection(S0, K, T, r, p, a, b, imax):
+  mid = a
+
   for i in range(0, imax):
     mid = (a + b)/2
     BS = bs.EuroCall(S0, K, T, r, mid)
@@ -39,7 +41,9 @@ def bisection(S0, K, T, r, p, a, b, imax):
       a = mid
     elif (BS >= p):
       b = mid
-  print("Nonetype error")
+  print("Bisection method failed to converge")
+  return None
+      
 
 # Surface plot for implied vol of EuroCall for various strikes and maturities
 def SurfacePlot(T, K, P, S0, r):
